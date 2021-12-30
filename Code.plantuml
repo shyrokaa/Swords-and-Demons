@@ -1,0 +1,259 @@
+@startuml
+
+title __CODE's Class Diagram__\n
+
+  namespace com.shyroka.engine {
+    abstract class com.shyroka.engine.AbstractCore {
+    }
+  }
+  
+
+  namespace com.shyroka.engine {
+    class com.shyroka.engine.Audio {
+    }
+  }
+  
+
+  namespace com.shyroka.engine {
+    class com.shyroka.engine.CoreGame {
+    }
+  }
+  
+
+  namespace com.shyroka.engine {
+    class com.shyroka.engine.Image {
+    }
+  }
+  
+
+  namespace com.shyroka.engine {
+    class com.shyroka.engine.ImageParse {
+    }
+  }
+  
+
+  namespace com.shyroka.engine {
+    class com.shyroka.engine.Input {
+    }
+  }
+  
+
+  namespace com.shyroka.engine {
+    class com.shyroka.engine.Renderer {
+    }
+  }
+  
+
+  namespace com.shyroka.engine {
+    class com.shyroka.engine.Text {
+    }
+  }
+  
+
+  namespace com.shyroka.engine {
+    class com.shyroka.engine.Window {
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.Boss {
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.Camera {
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.Devil {
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.GameManager {
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    abstract class com.shyroka.game.GameObject {
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.GameOverMenu {
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.GameWon {
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.Knight {
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.LevelHandler {
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.LoadMenu {
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.MainMenu {
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.PauseMenu {
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.Player {
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.SettingsMenu {
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.Skull {
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.SoundManager {
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.Tutorial {
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.Wolf {
+    }
+  }
+  
+
+  namespace com.shyroka.sql_save {
+    class com.shyroka.sql_save.Game_Server {
+    }
+  }
+  
+
+  com.shyroka.engine.CoreGame .up.|> java.lang.Runnable
+  com.shyroka.engine.CoreGame o-- com.shyroka.engine.AbstractCore : a_core
+  com.shyroka.engine.CoreGame o-- com.shyroka.engine.Input : input
+  com.shyroka.engine.CoreGame o-- com.shyroka.engine.Renderer : renderer
+  com.shyroka.engine.CoreGame o-- com.shyroka.engine.Window : window
+  com.shyroka.engine.ImageParse -up-|> com.shyroka.engine.Image
+  com.shyroka.engine.Input .up.|> java.awt.event.KeyListener
+  com.shyroka.engine.Input .up.|> java.awt.event.MouseListener
+  com.shyroka.engine.Input .up.|> java.awt.event.MouseMotionListener
+  com.shyroka.engine.Input .up.|> java.awt.event.MouseWheelListener
+  com.shyroka.engine.Input o-- com.shyroka.engine.CoreGame : core
+  com.shyroka.engine.Renderer o-- com.shyroka.engine.Text : font
+  com.shyroka.engine.Text o-- com.shyroka.engine.Image : textImage
+  com.shyroka.game.Boss -up-|> com.shyroka.game.GameObject
+  com.shyroka.game.Boss o-- com.shyroka.engine.ImageParse : boss_bite_left
+  com.shyroka.game.Boss o-- com.shyroka.engine.ImageParse : boss_bite_right
+  com.shyroka.game.Boss o-- com.shyroka.engine.ImageParse : boss_default_left
+  com.shyroka.game.Boss o-- com.shyroka.engine.ImageParse : boss_default_right
+  com.shyroka.game.Camera o-- com.shyroka.game.GameObject : target
+  com.shyroka.game.Devil -up-|> com.shyroka.game.GameObject
+  com.shyroka.game.Devil o-- com.shyroka.engine.ImageParse : devil_default_left
+  com.shyroka.game.Devil o-- com.shyroka.engine.ImageParse : devil_default_right
+  com.shyroka.game.Devil o-- com.shyroka.engine.ImageParse : devil_speak_left
+  com.shyroka.game.Devil o-- com.shyroka.engine.ImageParse : devil_speak_right
+  com.shyroka.game.GameManager -up-|> com.shyroka.engine.AbstractCore
+  com.shyroka.game.GameManager o-- com.shyroka.engine.Image : background_image1
+  com.shyroka.game.GameManager o-- com.shyroka.game.Camera : cam
+  com.shyroka.game.GameManager o-- com.shyroka.engine.Image : logo_image
+  com.shyroka.game.GameManager o-- com.shyroka.engine.Image : tile_image_1
+  com.shyroka.game.GameManager o-- com.shyroka.engine.Image : tile_image_2
+  com.shyroka.game.GameManager o-- com.shyroka.engine.Image : tile_image_3
+  com.shyroka.game.GameManager o-- com.shyroka.engine.Image : tile_image_4
+  com.shyroka.game.GameManager o-- com.shyroka.engine.Image : tile_image_5
+  com.shyroka.game.GameManager o-- com.shyroka.game.LevelHandler : L
+  com.shyroka.game.GameManager o-- com.shyroka.game.MainMenu : Menu
+  com.shyroka.game.GameManager o-- com.shyroka.game.SoundManager : Smag
+  com.shyroka.game.GameManager o-- com.shyroka.sql_save.Game_Server : saveDB
+  com.shyroka.game.Knight -up-|> com.shyroka.game.GameObject
+  com.shyroka.game.Knight o-- com.shyroka.engine.ImageParse : knight_bite_left
+  com.shyroka.game.Knight o-- com.shyroka.engine.ImageParse : knight_bite_right
+  com.shyroka.game.Knight o-- com.shyroka.engine.ImageParse : knight_default_left
+  com.shyroka.game.Knight o-- com.shyroka.engine.ImageParse : knight_default_right
+  com.shyroka.game.Knight o-- com.shyroka.engine.ImageParse : knight_fall_left
+  com.shyroka.game.Knight o-- com.shyroka.engine.ImageParse : knight_fall_right
+  com.shyroka.game.Knight o-- com.shyroka.engine.ImageParse : knight_run_left
+  com.shyroka.game.Knight o-- com.shyroka.engine.ImageParse : knight_run_right
+  com.shyroka.game.MainMenu o-- com.shyroka.engine.Image : background_mm
+  com.shyroka.game.MainMenu o-- com.shyroka.game.GameOverMenu : GOver
+  com.shyroka.game.MainMenu o-- com.shyroka.game.GameWon : GW
+  com.shyroka.game.MainMenu o-- com.shyroka.game.LoadMenu : Load
+  com.shyroka.game.MainMenu o-- com.shyroka.game.PauseMenu : Pause
+  com.shyroka.game.MainMenu o-- com.shyroka.game.SettingsMenu : Sett
+  com.shyroka.game.MainMenu o-- com.shyroka.game.Tutorial : Tut
+  com.shyroka.game.Player -up-|> com.shyroka.game.GameObject
+  com.shyroka.game.Player o-- com.shyroka.engine.ImageParse : player_attack_left
+  com.shyroka.game.Player o-- com.shyroka.engine.ImageParse : player_attack_right
+  com.shyroka.game.Player o-- com.shyroka.engine.ImageParse : player_default_left
+  com.shyroka.game.Player o-- com.shyroka.engine.ImageParse : player_default_right
+  com.shyroka.game.Player o-- com.shyroka.engine.ImageParse : player_fall_left
+  com.shyroka.game.Player o-- com.shyroka.engine.ImageParse : player_fall_right
+  com.shyroka.game.Player o-- com.shyroka.engine.ImageParse : player_run_left
+  com.shyroka.game.Player o-- com.shyroka.engine.ImageParse : player_run_right
+  com.shyroka.game.Skull -up-|> com.shyroka.game.GameObject
+  com.shyroka.game.Skull o-- com.shyroka.engine.ImageParse : skull_default_left
+  com.shyroka.game.Skull o-- com.shyroka.engine.ImageParse : skull_default_right
+  com.shyroka.game.SoundManager o-- com.shyroka.engine.Audio : boss_level_music
+  com.shyroka.game.SoundManager o-- com.shyroka.engine.Audio : level_music
+  com.shyroka.game.SoundManager o-- com.shyroka.engine.Audio : main_menu_music
+  com.shyroka.game.Wolf -up-|> com.shyroka.game.GameObject
+  com.shyroka.game.Wolf o-- com.shyroka.engine.ImageParse : wolf_bite_left
+  com.shyroka.game.Wolf o-- com.shyroka.engine.ImageParse : wolf_bite_right
+  com.shyroka.game.Wolf o-- com.shyroka.engine.ImageParse : wolf_default_left
+  com.shyroka.game.Wolf o-- com.shyroka.engine.ImageParse : wolf_default_right
+  com.shyroka.game.Wolf o-- com.shyroka.engine.ImageParse : wolf_fall_left
+  com.shyroka.game.Wolf o-- com.shyroka.engine.ImageParse : wolf_fall_right
+  com.shyroka.game.Wolf o-- com.shyroka.engine.ImageParse : wolf_run_left
+  com.shyroka.game.Wolf o-- com.shyroka.engine.ImageParse : wolf_run_right
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

@@ -1,0 +1,439 @@
+@startuml
+
+title __GAME's Class Diagram__\n
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.Boss {
+        ~ once : boolean
+        ~ temp : float
+        ~ temp_bite : float
+        - direction : int
+        - fallDistance : float
+        - gravity : float
+        - jump : float
+        - normal_speed : float
+        - offX : float
+        - offY : float
+        - phase2 : boolean
+        - phase3 : boolean
+        - phase4 : boolean
+        - phase5 : boolean
+        - states : int[]
+        - tileX : int
+        - tileY : int
+        + Boss()
+        + render()
+        + update()
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.Camera {
+        - offX : float
+        - offY : float
+        - targettag : String
+        + Camera()
+        + getOffX()
+        + getOffY()
+        + getTarget()
+        + getTargettag()
+        + setOffX()
+        + setOffY()
+        + setTarget()
+        + setTargettag()
+        + update()
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.Devil {
+        ~ temp : float
+        ~ temp_attack : float
+        ~ temp_run : float
+        - direction : int
+        - fallDistance : float
+        - gravity : float
+        - jump : float
+        - menu_list : boolean[]
+        - normal_speed : float
+        - offX : float
+        - offY : float
+        - states : int[]
+        - tileX : int
+        - tileY : int
+        + Devil()
+        + render()
+        + update()
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.GameManager {
+        {static} + TileSize : int
+        + collision : int[][]
+        + finalscore : int
+        + indexSaves : int
+        + levelHeight : int
+        + levelWidth : int
+        + load0 : boolean
+        + load1 : boolean
+        + load2 : boolean
+        + load3 : boolean
+        + load_menu : boolean
+        + objects : ArrayList<GameObject>
+        + reset : boolean
+        + saveHealth : int
+        + saveLevel : int
+        + saveScore : int
+        + saveX : int
+        + saveY : int
+        ~ Saves : String[]
+        ~ isRunning : boolean
+        ~ overload_save : int
+        ~ regular : int
+        ~ selected : int
+        + GameManager()
+        + addObject()
+        + getCollision()
+        + getObject()
+        + getObjects()
+        {static} + main()
+        + render()
+        + update()
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    abstract class com.shyroka.game.GameObject {
+        + score : int
+        # health : int
+        # height : int
+        # isDead : boolean
+        # isDeadBoss : boolean
+        # isDeadPlayer : boolean
+        # isFalling : boolean
+        # isTalking : boolean
+        # posX : int
+        # posY : int
+        # tag : String
+        # width : int
+        + getHeight()
+        + getPosX()
+        + getPosY()
+        + getTag()
+        + getWidth()
+        + isDead()
+        {abstract} + render()
+        + setHeight()
+        + setPosX()
+        + setPosY()
+        + setTag()
+        + setWidth()
+        {abstract} + update()
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.GameOverMenu {
+        + posX : int
+        + posY : int
+        ~ isGameOver : boolean
+        ~ regular : int
+        ~ selected : int
+        + GameOverMenu()
+        + renderGov()
+        + updateGOv()
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.GameWon {
+        + posX : int
+        + posY : int
+        ~ GO_menu_list : boolean[]
+        ~ horizontalNav : int
+        ~ isWon : boolean
+        ~ regular : int
+        ~ selected : int
+        ~ verticalNav : int
+        + GameWon()
+        + renderGW()
+        + updateGW()
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.Knight {
+        ~ temp : float
+        ~ temp_attack : float
+        ~ temp_run : float
+        - direction : int
+        - fallDistance : float
+        - gravity : float
+        - jump : float
+        - normal_speed : float
+        - offX : float
+        - offY : float
+        - states : int[]
+        - tileX : int
+        - tileY : int
+        + Knight()
+        + render()
+        + update()
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.LevelHandler {
+        + load1_file : boolean
+        + load2_file : boolean
+        + load3_file : boolean
+        + levelRender()
+        + levelRenderFile()
+        + levelUpdate()
+        + levelUpdateFile()
+        + loadLevel()
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.LoadMenu {
+        + posX : int
+        + posY : int
+        + saveList : boolean[][]
+        ~ horizontalNav : int
+        ~ isLoad : boolean
+        ~ regular : int
+        ~ selected : int
+        ~ verticalNav : int
+        + LoadMenu()
+        + renderLoad()
+        + updateLoad()
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.MainMenu {
+        + isMain : boolean
+        + isRunning : boolean
+        + menuList : boolean[]
+        + posX : int
+        + posY : int
+        ~ regular : int
+        ~ selected : int
+        ~ verticalNav : int
+        + MainMenu()
+        + renderMain()
+        + updateMain()
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.PauseMenu {
+        + posX : int
+        + posY : int
+        ~ horizontalNav : int
+        ~ isPaused : boolean
+        ~ pause_menu_list : boolean[]
+        ~ regular : int
+        ~ selected : int
+        ~ verticalNav : int
+        + PauseMenu()
+        + renderPause()
+        + updatePause()
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.Player {
+        ~ temp : float
+        ~ temp_attack : float
+        ~ temp_run : float
+        - direction : int
+        - fallDistance : float
+        - gravity : float
+        - jump : float
+        - normal_speed : float
+        - offX : float
+        - offY : float
+        - sprinting_speed : float
+        - states : int[]
+        - tileX : int
+        - tileY : int
+        + Player()
+        + render()
+        + update()
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.SettingsMenu {
+        + posX : int
+        + posY : int
+        ~ AudioOn : boolean
+        ~ isSettings : boolean
+        ~ regular : int
+        ~ selected : int
+        + SettingsMenu()
+        + renderLoad()
+        + updateLoad()
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.Skull {
+        ~ temp : float
+        ~ temp_bite : float
+        ~ temp_run : float
+        - direction : int
+        - fallDistance : float
+        - gravity : float
+        - jump : float
+        - normal_speed : float
+        - offX : float
+        - offY : float
+        - states : int[]
+        - tileX : int
+        - tileY : int
+        + Skull()
+        + render()
+        + update()
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.SoundManager {
+        ~ music_load_boss : boolean
+        ~ music_load_level : boolean
+        ~ music_load_menu : boolean
+        + SoundManager()
+        + update()
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.Tutorial {
+        + posX : int
+        + posY : int
+        ~ isTutorial : boolean
+        ~ regular : int
+        ~ selected : int
+        + Tutorial()
+        + renderT()
+        + updateT()
+    }
+  }
+  
+
+  namespace com.shyroka.game {
+    class com.shyroka.game.Wolf {
+        ~ temp : float
+        ~ temp_bite : float
+        ~ temp_run : float
+        - direction : int
+        - fallDistance : float
+        - gravity : float
+        - jump : float
+        - normal_speed : float
+        - offX : float
+        - offY : float
+        - states : int[]
+        - tileX : int
+        - tileY : int
+        + Wolf()
+        + render()
+        + update()
+    }
+  }
+  
+
+  com.shyroka.game.Boss -up-|> com.shyroka.game.GameObject
+  com.shyroka.game.Boss o-- com.shyroka.engine.ImageParse : boss_bite_left
+  com.shyroka.game.Boss o-- com.shyroka.engine.ImageParse : boss_bite_right
+  com.shyroka.game.Boss o-- com.shyroka.engine.ImageParse : boss_default_left
+  com.shyroka.game.Boss o-- com.shyroka.engine.ImageParse : boss_default_right
+  com.shyroka.game.Camera o-- com.shyroka.game.GameObject : target
+  com.shyroka.game.Devil -up-|> com.shyroka.game.GameObject
+  com.shyroka.game.Devil o-- com.shyroka.engine.ImageParse : devil_default_left
+  com.shyroka.game.Devil o-- com.shyroka.engine.ImageParse : devil_default_right
+  com.shyroka.game.Devil o-- com.shyroka.engine.ImageParse : devil_speak_left
+  com.shyroka.game.Devil o-- com.shyroka.engine.ImageParse : devil_speak_right
+  com.shyroka.game.GameManager -up-|> com.shyroka.engine.AbstractCore
+  com.shyroka.game.GameManager o-- com.shyroka.engine.Image : background_image1
+  com.shyroka.game.GameManager o-- com.shyroka.game.Camera : cam
+  com.shyroka.game.GameManager o-- com.shyroka.engine.Image : logo_image
+  com.shyroka.game.GameManager o-- com.shyroka.engine.Image : tile_image_1
+  com.shyroka.game.GameManager o-- com.shyroka.engine.Image : tile_image_2
+  com.shyroka.game.GameManager o-- com.shyroka.engine.Image : tile_image_3
+  com.shyroka.game.GameManager o-- com.shyroka.engine.Image : tile_image_4
+  com.shyroka.game.GameManager o-- com.shyroka.engine.Image : tile_image_5
+  com.shyroka.game.GameManager o-- com.shyroka.game.LevelHandler : L
+  com.shyroka.game.GameManager o-- com.shyroka.game.MainMenu : Menu
+  com.shyroka.game.GameManager o-- com.shyroka.game.SoundManager : Smag
+  com.shyroka.game.GameManager o-- com.shyroka.sql_save.Game_Server : saveDB
+  com.shyroka.game.Knight -up-|> com.shyroka.game.GameObject
+  com.shyroka.game.Knight o-- com.shyroka.engine.ImageParse : knight_bite_left
+  com.shyroka.game.Knight o-- com.shyroka.engine.ImageParse : knight_bite_right
+  com.shyroka.game.Knight o-- com.shyroka.engine.ImageParse : knight_default_left
+  com.shyroka.game.Knight o-- com.shyroka.engine.ImageParse : knight_default_right
+  com.shyroka.game.Knight o-- com.shyroka.engine.ImageParse : knight_fall_left
+  com.shyroka.game.Knight o-- com.shyroka.engine.ImageParse : knight_fall_right
+  com.shyroka.game.Knight o-- com.shyroka.engine.ImageParse : knight_run_left
+  com.shyroka.game.Knight o-- com.shyroka.engine.ImageParse : knight_run_right
+  com.shyroka.game.MainMenu o-- com.shyroka.engine.Image : background_mm
+  com.shyroka.game.MainMenu o-- com.shyroka.game.GameOverMenu : GOver
+  com.shyroka.game.MainMenu o-- com.shyroka.game.GameWon : GW
+  com.shyroka.game.MainMenu o-- com.shyroka.game.LoadMenu : Load
+  com.shyroka.game.MainMenu o-- com.shyroka.game.PauseMenu : Pause
+  com.shyroka.game.MainMenu o-- com.shyroka.game.SettingsMenu : Sett
+  com.shyroka.game.MainMenu o-- com.shyroka.game.Tutorial : Tut
+  com.shyroka.game.Player -up-|> com.shyroka.game.GameObject
+  com.shyroka.game.Player o-- com.shyroka.engine.ImageParse : player_attack_left
+  com.shyroka.game.Player o-- com.shyroka.engine.ImageParse : player_attack_right
+  com.shyroka.game.Player o-- com.shyroka.engine.ImageParse : player_default_left
+  com.shyroka.game.Player o-- com.shyroka.engine.ImageParse : player_default_right
+  com.shyroka.game.Player o-- com.shyroka.engine.ImageParse : player_fall_left
+  com.shyroka.game.Player o-- com.shyroka.engine.ImageParse : player_fall_right
+  com.shyroka.game.Player o-- com.shyroka.engine.ImageParse : player_run_left
+  com.shyroka.game.Player o-- com.shyroka.engine.ImageParse : player_run_right
+  com.shyroka.game.Skull -up-|> com.shyroka.game.GameObject
+  com.shyroka.game.Skull o-- com.shyroka.engine.ImageParse : skull_default_left
+  com.shyroka.game.Skull o-- com.shyroka.engine.ImageParse : skull_default_right
+  com.shyroka.game.SoundManager o-- com.shyroka.engine.Audio : boss_level_music
+  com.shyroka.game.SoundManager o-- com.shyroka.engine.Audio : level_music
+  com.shyroka.game.SoundManager o-- com.shyroka.engine.Audio : main_menu_music
+  com.shyroka.game.Wolf -up-|> com.shyroka.game.GameObject
+  com.shyroka.game.Wolf o-- com.shyroka.engine.ImageParse : wolf_bite_left
+  com.shyroka.game.Wolf o-- com.shyroka.engine.ImageParse : wolf_bite_right
+  com.shyroka.game.Wolf o-- com.shyroka.engine.ImageParse : wolf_default_left
+  com.shyroka.game.Wolf o-- com.shyroka.engine.ImageParse : wolf_default_right
+  com.shyroka.game.Wolf o-- com.shyroka.engine.ImageParse : wolf_fall_left
+  com.shyroka.game.Wolf o-- com.shyroka.engine.ImageParse : wolf_fall_right
+  com.shyroka.game.Wolf o-- com.shyroka.engine.ImageParse : wolf_run_left
+  com.shyroka.game.Wolf o-- com.shyroka.engine.ImageParse : wolf_run_right
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
